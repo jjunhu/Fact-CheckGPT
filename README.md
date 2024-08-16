@@ -1,5 +1,5 @@
 
-# **✨ Fact-CheckGPT: [A *Dual-Phase* Approach with Enhanced Retrieval and Entailment Models ✨**](https://jjunhu.github.io/Fact-CheckGPT/Retrieval_Entailment_Final_Report.pdf)
+# ✨ Fact-CheckGPT: [A *Dual-Phase* Approach with Enhanced Retrieval and Entailment Models ✨](https://jjunhu.github.io/Fact-CheckGPT/Retrieval_Entailment_Final_Report.pdf)
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
