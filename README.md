@@ -1,5 +1,5 @@
 
-# Retrieval-Then-Entailment Pipeline for Claim Verification
+# **✨ Fact-CheckGPT: [A *Dual-Phase* Approach with Enhanced Retrieval and Entailment Models ✨**](https://jjunhu.github.io/Fact-CheckGPT/Retrieval_Entailment_Final_Report.pdf)
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -14,7 +14,7 @@
 
 ## Project Overview
 
-This project implements a retrieval-then-entailment pipeline designed to verify claims based on retrieved text passages. The pipeline is evaluated using multiple retrieval models, including DPR, Contriever, BM25, and a fine-tuned version of Contriever. The main goal is to assess the effectiveness of these models in accurately retrieving relevant passages and determining whether these passages support or refute the given claims.
+This project aims to mitigate and resolve the issue of inadequate context length in modern large language models, in particular, models tailored for fact-checking. The current frontier approach consists of passing the entire context -– entire book, entire news database, into a language model, that frankly often either exceeds the context window lenghth or incurs too much cost. Our approach aims to drastically decrease that cost by reducing the length of each prompt via extracting high-quality, tailored, and claim-specific context that is only a thousandth of the original context length. We implement a retrieval-then-entailment pipeline designed to verify claims based on retrieved text passages. The pipeline is evaluated using multiple retrieval models, including DPR, Contriever, BM25, and a fine-tuned version of Contriever. The main goal is to assess the effectiveness of these models in accurately retrieving relevant passages and determining whether these passages support or refute the given claims.
 
 ## Pipeline Description
 
@@ -27,9 +27,9 @@ The pipeline operates in two main stages:
 ### Execution Process
 
 The pipeline is executed using the following code:
-\`\`\`python
+```python
 result = self.classifier(f"{truncated_premise}{self.tokenizer.sep_token}{claim}")
-\`\`\`
+```
 Here, \`truncated_premise\` represents the retrieved document chunk, and \`claim\` is the input claim to be verified.
 
 ## Dataset Information
@@ -61,15 +61,15 @@ Ensure you have Python 3.7+ installed. Additionally, the following Python packag
 ### Installation Steps
 
 1. Clone this repository:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/yourusername/retrieval-entailment-pipeline.git
    cd retrieval-entailment-pipeline
-   \`\`\`
+   ```
 
 2. Install the required packages:
-   \`\`\`bash
+   ```bash
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 3. Download the necessary models and datasets:
    - BART fine-tuned on MNLI: [BART-MNLI](https://huggingface.co/facebook/bart-large-mnli)
@@ -77,32 +77,31 @@ Ensure you have Python 3.7+ installed. Additionally, the following Python packag
 
 ## Usage
 
-### Running the Pipeline
+### Running the Pipeline and Fine-Tuning
 
 1. **Prepare the Dataset**:
    - Ensure your dataset is properly formatted and located in the specified directory.
 
 2. **Run the Retrieval-Then-Entailment Pipeline**:
-   \`\`\`bash
-   python run_pipeline.py --model_name dpr --dataset_path ./data/test_data.json
-   \`\`\`
+   ```bash
+   python run_entailment_pipeline.py --entailment_model_name --retriever_model_name 
+   ```
 
-3. **Analyze Results**:
-   - The \`analyze_results\` function processes the output to compute various accuracy metrics and entailment counts.
+3. **Fine-Tuning the Retriever Model**:
+   ```bash
+   python fine_tune.py --batch_size 
+   ```
 
-### Configuration
+4. **Other Retrievers**:
+   ```bash
+   python run_retrievers.py --retriever_model_name 
+   ```
 
-You can modify the configuration parameters such as model type, batch size, learning rate, and more by editing the \`config.json\` file.
 
-## Results
+### Slurm 
 
-The pipeline's performance is evaluated using several metrics, including overall accuracy, true accuracy, and the percentage of time the target passage is in the top 10 retrieved passages.
+You can make sure of the slurm scripts to schedule and manage running tasks in the \slurm_scripts directory. 
 
-- **Overall Accuracy**: Measures how often the retrieval model's prediction matches the correct entailment.
-- **True Accuracy**: Reflects the model's accuracy when the gold passage is retrieved and leads to the correct entailment.
-- **Percentage in Top 10**: Indicates the frequency with which the target passage is found within the top 10 retrieved passages.
-
-The results are saved in the \`results/\` directory, and key metrics are displayed on the console.
 
 ## Contributing
 
