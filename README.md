@@ -104,23 +104,6 @@ The pipeline's performance is evaluated using several metrics, including overall
 
 The results are saved in the \`results/\` directory, and key metrics are displayed on the console.
 
-## Visualization
-
-The project includes a script to generate visualizations of the accuracy metrics. The graphs show the overall accuracy and true accuracy for the different retrieval models.
-
-To generate the graph:
-
-1. Run the following script:
-   \`\`\`bash
-   python generate_plots.py
-   \`\`\`
-
-2. The output graph will be saved in the \`visualizations/\` directory.
-
-Example graph:
-
-![Overall and True Accuracy for Different Retrieval Models](retrieval_models_accuracy.png)
-
 ## Contributing
 
 We welcome contributions to improve this project. Please follow these steps:
