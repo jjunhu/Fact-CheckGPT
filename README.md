@@ -7,8 +7,6 @@
 3. [Dataset Information](#dataset-information)
 4. [Installation](#installation)
 5. [Usage](#usage)
-6. [Results](#results)
-7. [Visualization](#visualization)
 8. [Contributing](#contributing)
 9. [License](#license)
 
